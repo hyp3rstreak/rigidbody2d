@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cvks48x5ahxq3"]
+
+[ext_resource type="PackedScene" uid="uid://c5kpv2nv7yt5y" path="res://scenes/playerShip.tscn" id="1_nnsk1"]
+[ext_resource type="PackedScene" uid="uid://si3cmc1hexl8" path="res://scenes/planet.tscn" id="2_rwgxs"]
+[ext_resource type="PackedScene" uid="uid://ntk21j16266s" path="res://scenes/ui.tscn" id="3_4wyf3"]
+[ext_resource type="Script" uid="uid://dhxf7sxqxo83o" path="res://scripts/ui.gd" id="4_k0juu"]
+
+[node name="world" type="Node2D" unique_id=814079502]
+
+[node name="playerShip" parent="." unique_id=202861763 instance=ExtResource("1_nnsk1")]
+position = Vector2(387, 442)
+mass = 2.445
+
+[node name="planet" parent="." unique_id=1675941392 instance=ExtResource("2_rwgxs")]
+position = Vector2(387, 271)
+
+[node name="UI" parent="." unique_id=1934937286 instance=ExtResource("3_4wyf3")]
+script = ExtResource("4_k0juu")

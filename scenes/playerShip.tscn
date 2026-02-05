@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://c5kpv2nv7yt5y"]
+
+[ext_resource type="Texture2D" uid="uid://1ttqyotjgwcg" path="res://assets/PXL.png" id="1_lbd62"]
+[ext_resource type="Script" uid="uid://dc7aq0mj8xxce" path="res://scripts/playerShip.gd" id="1_nqx6x"]
+[ext_resource type="Gradient" uid="uid://bcn2it1vm28mk" path="res://assets/blueThruster.tres" id="2_qc0et"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qc0et"]
+radius = 13.0
+
+[node name="playerShip" type="RigidBody2D" unique_id=202861763]
+gravity_scale = 0.0
+script = ExtResource("1_nqx6x")
+desired_orbit_speed = 71
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1774988919]
+texture = ExtResource("1_lbd62")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1821074984]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_qc0et")
+
+[node name="thrusterTrailRight" type="Line2D" parent="." unique_id=2071379938]
+top_level = true
+width = 2.0
+gradient = ExtResource("2_qc0et")
+antialiased = true
+
+[node name="thrusterTrailLeft" type="Line2D" parent="." unique_id=2101690899]
+top_level = true
+width = 2.0
+gradient = ExtResource("2_qc0et")
+antialiased = true
+
+[node name="thrusterRight" type="Marker2D" parent="." unique_id=1119809742]
+position = Vector2(4, 10)
+
+[node name="thrusterLeft" type="Marker2D" parent="." unique_id=778945185]
+position = Vector2(-4, 10)
