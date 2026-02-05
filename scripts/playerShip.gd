@@ -49,6 +49,8 @@ var newTrailState := currTrailState
 var canInput := true
 var dockRadius := 12
 var undockRadius := 200
+var canOrbit := false
+var currOrbitZone: Area2D = null
 
 # =========================
 # 5. NODE REFERENCES
@@ -58,7 +60,7 @@ var undockRadius := 200
 @onready var thrusterTrailLeft: Line2D = $thrusterTrailLeft
 @onready var thrusterRight: Marker2D = $thrusterRight
 @onready var thrusterLeft: Marker2D = $thrusterLeft
-@onready var planet: Area2D = $"../planet"
+@onready var planet: Area2D = null
 
 # =========================
 # 6. LIFECYCLE CALLBACKS
@@ -161,10 +163,10 @@ func _physics_process(delta: float) -> void:
 	# limit length
 	while thrusterTrailRight.points.size() > trail_lengthR:
 		thrusterTrailRight.remove_point(0)
-		print("THRUSTER R: remove point - ",thrusterTrailRight.points.size()," points rem - trail_lengthR=", trail_lengthR)
+		#print("THRUSTER R: remove point - ",thrusterTrailRight.points.size()," points rem - trail_lengthR=", trail_lengthR)
 	while thrusterTrailLeft.points.size() > trail_lengthL:
 		thrusterTrailLeft.remove_point(0)
-		print("THRUSTER L: remove point - ",thrusterTrailLeft.points.size()," points rem - trail_lengthL=", trail_lengthL)
+		#print("THRUSTER L: remove point - ",thrusterTrailLeft.points.size()," points rem - trail_lengthL=", trail_lengthL)
 	
 	if canInput:
 		# Rotation
@@ -218,11 +220,22 @@ func set_motion_mode(new_mode: MotionMode) -> void:
 # =========================
 func set_orbit_trails(state) -> void:
 	if state == EngineTrails.CCW:
-		trail_lengthL = 150
-		trail_lengthR = 200
+		trail_lengthL = 80
+		trail_lengthR = 100
 	elif state == EngineTrails.CW:
-		trail_lengthR = 150
-		trail_lengthL = 200
+		trail_lengthR = 80
+		trail_lengthL = 100
 	elif state == EngineTrails.EQUAL:
-		trail_lengthL = 200
-		trail_lengthR = 200
+		trail_lengthL = 100
+		trail_lengthR = 100
+
+func set_can_orbit(value: bool, zone: Area2D) -> void:
+	canOrbit = value
+	currOrbitZone = zone if value else null
+
+func enterOrbit() -> void:
+	if currOrbitZone == null:
+		return
+
+	planet = currOrbitZone.get_parent()
+	set_motion_mode(MotionMode.CINEMATIC_ORBIT)

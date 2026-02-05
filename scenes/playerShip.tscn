@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://1ttqyotjgwcg" path="res://assets/PXL.png" id="1_lbd62"]
 [ext_resource type="Script" uid="uid://d0pes3lsrwvov" path="res://scripts/playerShip.gd" id="1_nqx6x"]
 [ext_resource type="Gradient" uid="uid://bcn2it1vm28mk" path="res://assets/blueThruster.tres" id="2_qc0et"]
+[ext_resource type="Script" uid="uid://dyfap2e1a1k4v" path="res://scripts/camera_2d.gd" id="4_dbw2a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qc0et"]
 radius = 13.0
@@ -36,3 +37,6 @@ position = Vector2(4, 10)
 
 [node name="thrusterLeft" type="Marker2D" parent="." unique_id=778945185]
 position = Vector2(-4, 10)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1895364436]
+script = ExtResource("4_dbw2a")

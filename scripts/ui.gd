@@ -16,23 +16,18 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _on_button_toggled(toggled_on: bool) -> void:
-	print(toggled_on)
-	if toggled_on:
-		if player_ship.motion_mode == player_ship.MotionMode.NEWTONIAN:
-			player_ship.set_motion_mode(player_ship.MotionMode.CINEMATIC_ORBIT)
-		#player_ship.motion_mode = MotionMode.CINEMATIC_ORBIT
-	else:
-		player_ship.set_motion_mode(player_ship.MotionMode.NEWTONIAN)
-
 
 # ORBIT BUTTON
 func _on_orbit_btn_pressed() -> void:
-	if player_ship.motion_mode == player_ship.MotionMode.NEWTONIAN:
-		player_ship.set_motion_mode(player_ship.MotionMode.CINEMATIC_ORBIT)
-	dock_btn.disabled = false
-	undock_btn.disabled = true
-	orbit_btn.disabled = true
+	if player_ship.canOrbit:
+		print("canOrbit")
+		if player_ship.motion_mode == player_ship.MotionMode.NEWTONIAN:
+			player_ship.set_motion_mode(player_ship.MotionMode.CINEMATIC_ORBIT)
+		elif player_ship.motion_mode == player_ship.MotionMode.CINEMATIC_ORBIT:
+			player_ship.set_motion_mode(player_ship.MotionMode.NEWTONIAN)
+		dock_btn.disabled = false
+		undock_btn.disabled = true
+		orbit_btn.disabled = false
 		
 
 # DOCK BUTTON
