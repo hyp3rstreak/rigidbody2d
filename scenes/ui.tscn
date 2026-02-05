@@ -12,9 +12,19 @@ offset_bottom = 31.0
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1583055499]
 layout_mode = 2
 
-[node name="Button" type="CheckButton" parent="HBoxContainer/VBoxContainer" unique_id=718770983]
+[node name="orbitBtn" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1893025838]
 layout_mode = 2
 tooltip_text = "turn on/off auto orbit"
 text = "orbit"
 
-[connection signal="toggled" from="HBoxContainer/VBoxContainer/Button" to="." method="_on_button_toggled"]
+[node name="dockBtn" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=571183862]
+layout_mode = 2
+text = "dock"
+
+[node name="undockBtn" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=682371509]
+layout_mode = 2
+text = "undock"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/orbitBtn" to="." method="_on_orbit_btn_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/dockBtn" to="." method="_on_dock_btn_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/undockBtn" to="." method="_on_undock_btn_pressed"]

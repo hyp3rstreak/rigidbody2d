@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c5kpv2nv7yt5y"]
 
 [ext_resource type="Texture2D" uid="uid://1ttqyotjgwcg" path="res://assets/PXL.png" id="1_lbd62"]
-[ext_resource type="Script" uid="uid://dc7aq0mj8xxce" path="res://scripts/playerShip.gd" id="1_nqx6x"]
+[ext_resource type="Script" uid="uid://d0pes3lsrwvov" path="res://scripts/playerShip.gd" id="1_nqx6x"]
 [ext_resource type="Gradient" uid="uid://bcn2it1vm28mk" path="res://assets/blueThruster.tres" id="2_qc0et"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qc0et"]
